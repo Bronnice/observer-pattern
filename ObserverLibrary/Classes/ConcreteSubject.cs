@@ -8,7 +8,7 @@ namespace ObserverLibrary
 {
     public class ConcreteSubject : Subject
     {
-        List<ConcreteObserver> observers = new List<ConcreteObserver> { };
+        List<Observer> observers = new List<Observer> { };
 
         public void NotifyObserver()
         {
@@ -18,12 +18,12 @@ namespace ObserverLibrary
             }
         }
 
-        public void RegisterObserver(ConcreteObserver item)
+        public void RegisterObserver(Observer item)
         {
             observers.Add(item);
         }
 
-        public void RemoveObserver(ConcreteObserver item)
+        public void RemoveObserver(Observer item)
         {
             observers.Remove(item);
         }

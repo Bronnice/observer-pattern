@@ -8,8 +8,8 @@ namespace ObserverLibrary
 {
     public interface Subject
     {
-        void RegisterObserver(ConcreteObserver item);
-        void RemoveObserver(ConcreteObserver item);
+        void RegisterObserver(Observer item);
+        void RemoveObserver(Observer item);
         void NotifyObserver();
 
 
