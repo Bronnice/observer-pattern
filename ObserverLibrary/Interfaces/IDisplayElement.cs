@@ -3,15 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ObserverLibrary;
 
-namespace Observer
+namespace ObserverLibrary
 {
-    class Program
+    public interface IDisplayElement
     {
-        static void Main(string[] args)
-        {
-            
-        }
+        string Display();
     }
 }

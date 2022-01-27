@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace ObserverLibrary
 {
-    public interface Subject
+    public interface ISubject
     {
-        void RegisterObserver(ConcreteObserver item);
-        void RemoveObserver(ConcreteObserver item);
+        void RegisterObserver(IObserver item);
+        void RemoveObserver(IObserver item);
         void NotifyObserver();
-
-
     }
 }

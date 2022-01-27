@@ -41,10 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\ConcreteObserver.cs" />
-    <Compile Include="Classes\ConcreteSubject.cs" />
-    <Compile Include="Interfaces\Observer.cs" />
-    <Compile Include="Interfaces\Subject.cs" />
+    <Compile Include="Classes\Observers\CurrentConditionsDisplay.cs" />
+    <Compile Include="Classes\Observers\ForecastDisplay.cs" />
+    <Compile Include="Classes\Observers\StatisticsDisplay.cs" />
+    <Compile Include="Classes\Subjects\WeatherData.cs" />
+    <Compile Include="Interfaces\IDisplayElement.cs" />
+    <Compile Include="Interfaces\IObserver.cs" />
+    <Compile Include="Interfaces\ISubject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
