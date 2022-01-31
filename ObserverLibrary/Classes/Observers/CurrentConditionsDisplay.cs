@@ -8,20 +8,20 @@ namespace ObserverLibrary
 {
     public class CurrentConditionsDisplay : IObserver, IDisplayElement
     {
-        float currenttemperature;
-        int currenthumidity;
-        int currentpressure;
+        float temperature;
+        int humidity;
+        int pressure;
 
         public string Display()
         {
-            return "Температура: " + currenttemperature + "\nВлажность: " + currenthumidity + "\nДавление: " + currentpressure; ;
+            return "Температура: " + temperature + "\nВлажность: " + humidity + "\nДавление: " + pressure; ;
         }
 
-        public void Update(float newtemperature, int newhumidity, int newpressure)
+        public void Update(Data data)
         {
-            currenttemperature = newtemperature;
-            currenthumidity = newhumidity;
-            currentpressure = newpressure;
+            temperature = data.currentTemp;
+            humidity = data.currentHumidity;
+            pressure = data.currentPressure;
         }
     }
 }

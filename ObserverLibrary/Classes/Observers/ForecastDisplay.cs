@@ -8,14 +8,19 @@ namespace ObserverLibrary.Classes.Observers
 {
     public class ForecastDisplay : IObserver, IDisplayElement
     {
+        float temperature;
+        int humidity;
+        int pressure;
         public string Display()
         {
-            throw new NotImplementedException();
+            return "Прогноз погоды:\n" + "Температура: " + temperature + "\nВлажность: " + humidity + "\nДавление: " + pressure;
         }
 
-        public void Update(float temperature, int humidity, int pressure)
+        public void Update(Data data)
         {
-            throw new NotImplementedException();
+            temperature = data.tempForecast;
+            humidity = data.humidityForecast;
+            pressure = data.pressureForecast;
         }
     }
 }

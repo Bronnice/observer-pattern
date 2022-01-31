@@ -8,6 +8,6 @@ namespace ObserverLibrary
 {
     public interface IObserver
     {
-        void Update(float temperature, int humidity, int pressure);
+        void Update(Data data);
     }
 }

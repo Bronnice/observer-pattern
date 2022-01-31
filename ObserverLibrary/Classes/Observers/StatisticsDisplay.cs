@@ -13,7 +13,7 @@ namespace ObserverLibrary
             throw new NotImplementedException();
         }
 
-        public void Update(float temperature, int humidity, int pressure)
+        public void Update(Data data)
         {
             throw new NotImplementedException();
         }

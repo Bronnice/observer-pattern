@@ -14,7 +14,7 @@ namespace ObserverLibrary
         {
             for (int i = 0; i < observers.Count; i++)
             {
-                observers[i].Update(temperature, humidity, pressure);
+                observers[i].Update(data);
             }
         }
         public void RegisterObserver(IObserver item)
@@ -31,25 +31,40 @@ namespace ObserverLibrary
             NotifyObserver();
         }
 
+        readonly Data data = new Data();
 
-        float temperature;
-        int humidity;
-        int pressure;
+        public float CurrentTemperature
+        {
+            get { return data.currentTemp; }
+            set { data.currentTemp = value; MeasurementsChanged(); data.StatisticTemp(value); }
+        }
+        public int CurrentHumidity
+        {
+            get { return data.currentHumidity; }
+            set { data.currentHumidity = value; MeasurementsChanged(); data.StatisticHumidity(value); }
+        }
+        public int CurrentPressure
+        {
+            get { return data.currentPressure; }
+            set { data.currentPressure = value; MeasurementsChanged(); data.StatisticPressure(value); }
+        }
 
-        public float Temperature
+
+        readonly Random random = new Random();
+        public float ForecastTemperature
         {
-            get { return temperature; }
-            set { temperature = value; MeasurementsChanged(); }
+            get { return data.tempForecast; }
+            set { data.tempForecast = random.Next(10, 25); MeasurementsChanged(); }
         }
-        public int Humidity
+        public int ForecastHumidity
         {
-            get { return humidity; }
-            set { humidity = value; MeasurementsChanged(); }
+            get { return data.humidityForecast; }
+            set { data.humidityForecast = random.Next(40, 60); MeasurementsChanged(); }
         }
-        public int Pressure
+        public int ForecastPressure
         {
-            get { return pressure; }
-            set { pressure = value; MeasurementsChanged(); }
+            get { return data.pressureForecast; }
+            set { data.pressureForecast = random.Next(740, 755); MeasurementsChanged(); }
         }
     }
 }
