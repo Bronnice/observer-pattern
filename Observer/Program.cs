@@ -11,7 +11,35 @@ namespace Observer
     {
         static void Main(string[] args)
         {
+            WeatherData wd = new WeatherData();
             
+            CurrentConditionsDisplay ccd = new CurrentConditionsDisplay();
+            ForecastDisplay fd = new ForecastDisplay();
+            StatisticsDisplay sd = new StatisticsDisplay();
+
+            wd.RegisterObserver(ccd);
+            wd.RegisterObserver(fd);
+            wd.RegisterObserver(sd);
+
+            Random rnd = new Random();
+            for (int i = 0; i < 12; i++)
+            {
+                wd.CurrentHumidity = rnd.Next(40, 60);
+                wd.CurrentPressure = rnd.Next(740, 755);
+                wd.CurrentTemperature = rnd.Next(10, 25);
+            }
+
+            wd.ForecastHumidity = 0;
+            wd.ForecastTemperature = 0;
+            wd.ForecastPressure = 0;
+
+            Console.WriteLine(ccd.Display());
+            Console.WriteLine();
+            Console.WriteLine(fd.Display());
+            Console.WriteLine();
+            Console.WriteLine(sd.Display());
+
+            Console.ReadKey();
         }
     }
 }

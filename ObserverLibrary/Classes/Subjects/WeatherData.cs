@@ -26,42 +26,42 @@ namespace ObserverLibrary
             observers.Remove(item);
         }
 
-        void MeasurementsChanged()
+        public void MeasurementsChanged()
         {
             NotifyObserver();
         }
 
-        readonly Data data = new Data();
+        Data data = new Data();
 
-        public float CurrentTemperature
+        public double CurrentTemperature
         {
             get { return data.currentTemp; }
-            set { data.currentTemp = value; MeasurementsChanged(); data.StatisticTemp(value); }
+            set { data.currentTemp = value; data.StatisticTemp(data.currentTemp); MeasurementsChanged(); }
         }
-        public int CurrentHumidity
+        public double CurrentHumidity
         {
             get { return data.currentHumidity; }
-            set { data.currentHumidity = value; MeasurementsChanged(); data.StatisticHumidity(value); }
+            set { data.currentHumidity = value; data.StatisticHumidity(data.currentHumidity); MeasurementsChanged(); }
         }
-        public int CurrentPressure
+        public double CurrentPressure
         {
             get { return data.currentPressure; }
-            set { data.currentPressure = value; MeasurementsChanged(); data.StatisticPressure(value); }
+            set { data.currentPressure = value; data.StatisticPressure(data.currentPressure); MeasurementsChanged(); }
         }
 
 
         readonly Random random = new Random();
-        public float ForecastTemperature
+        public double ForecastTemperature
         {
             get { return data.tempForecast; }
             set { data.tempForecast = random.Next(10, 25); MeasurementsChanged(); }
         }
-        public int ForecastHumidity
+        public double ForecastHumidity
         {
             get { return data.humidityForecast; }
             set { data.humidityForecast = random.Next(40, 60); MeasurementsChanged(); }
         }
-        public int ForecastPressure
+        public double ForecastPressure
         {
             get { return data.pressureForecast; }
             set { data.pressureForecast = random.Next(740, 755); MeasurementsChanged(); }

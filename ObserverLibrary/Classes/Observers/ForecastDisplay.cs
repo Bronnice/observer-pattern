@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObserverLibrary.Classes.Observers
+namespace ObserverLibrary
 {
     public class ForecastDisplay : IObserver, IDisplayElement
     {
-        float temperature;
-        int humidity;
-        int pressure;
+        double temperature;
+        double humidity;
+        double pressure;
         public string Display()
         {
             return "Прогноз погоды:\n" + "Температура: " + temperature + "\nВлажность: " + humidity + "\nДавление: " + pressure;

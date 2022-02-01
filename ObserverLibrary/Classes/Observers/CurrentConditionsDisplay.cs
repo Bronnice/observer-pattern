@@ -8,13 +8,13 @@ namespace ObserverLibrary
 {
     public class CurrentConditionsDisplay : IObserver, IDisplayElement
     {
-        float temperature;
-        int humidity;
-        int pressure;
+        double temperature;
+        double humidity;
+        double pressure;
 
         public string Display()
         {
-            return "Температура: " + temperature + "\nВлажность: " + humidity + "\nДавление: " + pressure; ;
+            return "Текущая погода:"+"\nТемпература: " + temperature + "\nВлажность: " + humidity + "\nДавление: " + pressure; ;
         }
 
         public void Update(Data data)
