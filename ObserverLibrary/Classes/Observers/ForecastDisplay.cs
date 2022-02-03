@@ -11,16 +11,22 @@ namespace ObserverLibrary
         double temperature;
         double humidity;
         double pressure;
+        readonly Random rnd = new Random();
+
         public string Display()
         {
             return "Прогноз погоды:\n" + "Температура: " + temperature + "\nВлажность: " + humidity + "\nДавление: " + pressure;
         }
 
+        /// <summary>
+        /// Получение новых показателей текущей температуры
+        /// </summary>
+        /// <param name="data">Данные</param>
         public void Update(Data data)
         {
-            temperature = data.tempForecast;
-            humidity = data.humidityForecast;
-            pressure = data.pressureForecast;
+            temperature = data.currentTemp * (rnd.Next(5, 15) / 10);
+            humidity = data.currentHumidity * (rnd.Next(5, 15) / 10);
+            pressure = data.currentPressure * (rnd.Next(5, 15) / 10);
         }
     }
 }

@@ -8,8 +8,14 @@ namespace ObserverLibrary
 {
     public class WeatherData : ISubject
     {
+        /// <summary>
+        /// Список для хранения наблюдателей
+        /// </summary>
         readonly List<IObserver> observers = new List<IObserver> { };
 
+        /// <summary>
+        /// Оповещение наблюдателей
+        /// </summary>
         public void NotifyObserver()
         {
             for (int i = 0; i < observers.Count; i++)
@@ -17,54 +23,75 @@ namespace ObserverLibrary
                 observers[i].Update(data);
             }
         }
+
+        /// <summary>
+        /// Регистрация нового наблюдателя
+        /// </summary>
+        /// <param name="item">Регистрируемый наблюдатель</param>
         public void RegisterObserver(IObserver item)
         {
             observers.Add(item);
         }
+
+        /// <summary>
+        /// Удаление наблюдателя
+        /// </summary>
+        /// <param name="item">удаляемый наблюдатель</param>
         public void RemoveObserver(IObserver item)
         {
             observers.Remove(item);
         }
 
+        /// <summary>
+        /// Смена измерений
+        /// </summary>
         public void MeasurementsChanged()
         {
             NotifyObserver();
         }
 
-        Data data = new Data();
+        readonly Data data = new Data();
 
+        /// <summary>
+        /// изменение текущей температуры
+        /// </summary>
         public double CurrentTemperature
         {
             get { return data.currentTemp; }
-            set { data.currentTemp = value; data.StatisticTemp(data.currentTemp); MeasurementsChanged(); }
+            set 
+            { 
+                data.currentTemp = value; 
+                data.StatisticTemp(data.currentTemp); 
+                MeasurementsChanged(); 
+            }
         }
+
+        /// <summary>
+        /// изменение текущей влажности
+        /// </summary>
         public double CurrentHumidity
         {
             get { return data.currentHumidity; }
-            set { data.currentHumidity = value; data.StatisticHumidity(data.currentHumidity); MeasurementsChanged(); }
+            set 
+            { 
+                data.currentHumidity = value; 
+                data.StatisticHumidity(data.currentHumidity); 
+                MeasurementsChanged(); 
+            }
         }
+
+        /// <summary>
+        /// изменение текущего давления
+        /// </summary>
         public double CurrentPressure
         {
             get { return data.currentPressure; }
-            set { data.currentPressure = value; data.StatisticPressure(data.currentPressure); MeasurementsChanged(); }
-        }
-
-
-        readonly Random random = new Random();
-        public double ForecastTemperature
-        {
-            get { return data.tempForecast; }
-            set { data.tempForecast = random.Next(10, 25); MeasurementsChanged(); }
-        }
-        public double ForecastHumidity
-        {
-            get { return data.humidityForecast; }
-            set { data.humidityForecast = random.Next(40, 60); MeasurementsChanged(); }
-        }
-        public double ForecastPressure
-        {
-            get { return data.pressureForecast; }
-            set { data.pressureForecast = random.Next(740, 755); MeasurementsChanged(); }
+            set 
+            { 
+                data.currentPressure = value; 
+                data.StatisticPressure(data.currentPressure); 
+                MeasurementsChanged(); 
+            }
         }
     }
 }

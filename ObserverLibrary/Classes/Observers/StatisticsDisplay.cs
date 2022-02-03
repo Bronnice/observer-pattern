@@ -35,6 +35,10 @@ namespace ObserverLibrary
                    "\nСреднее давление: " + averagePressure;
         }
 
+        /// <summary>
+        /// Получение статистики
+        /// </summary>
+        /// <param name="data">Данные статистики</param>
         public void Update(Data data)
         {
             minTemp = data.minTemp;

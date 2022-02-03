@@ -17,21 +17,19 @@ namespace Observer
             ForecastDisplay fd = new ForecastDisplay();
             StatisticsDisplay sd = new StatisticsDisplay();
 
+            ///Регистрация наблюдателей
             wd.RegisterObserver(ccd);
             wd.RegisterObserver(fd);
             wd.RegisterObserver(sd);
 
+            ///Случайное заполнение текущих температуры, давления, влажности
             Random rnd = new Random();
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 24; i++)
             {
                 wd.CurrentHumidity = rnd.Next(40, 60);
                 wd.CurrentPressure = rnd.Next(740, 755);
                 wd.CurrentTemperature = rnd.Next(10, 25);
             }
-
-            wd.ForecastHumidity = 0;
-            wd.ForecastTemperature = 0;
-            wd.ForecastPressure = 0;
 
             Console.WriteLine(ccd.Display());
             Console.WriteLine();

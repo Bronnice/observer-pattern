@@ -17,6 +17,10 @@ namespace ObserverLibrary
             return "Текущая погода:"+"\nТемпература: " + temperature + "\nВлажность: " + humidity + "\nДавление: " + pressure; ;
         }
 
+        /// <summary>
+        /// Получение обновлений для текущих показателей
+        /// </summary>
+        /// <param name="data">Новые данные</param>
         public void Update(Data data)
         {
             temperature = data.currentTemp;

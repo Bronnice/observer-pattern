@@ -12,114 +12,102 @@ namespace ObserverLibrary
         public double currentHumidity;
         public double currentPressure;
 
-        public double tempForecast;
-        public double humidityForecast;
-        public double pressureForecast;
-
-        public double minTemp;
-        public double maxTemp;
+        public double minTemp = double.NaN;
+        public double maxTemp = double.NaN;
         public double averageTemp;
 
-        public double minHumidity;
-        public double maxHumidity;
+        public double minHumidity = double.NaN;
+        public double maxHumidity = double.NaN;
         public double averageHumidity;
 
-        public double minPressure;
-        public double maxPressure;
+        public double minPressure = double.NaN;
+        public double maxPressure = double.NaN;
         public double averagePressure;
 
 
-        readonly List<double> temperatures = new List<double> { };
-        readonly List<double> humidities = new List<double> { };
-        readonly List<double> pressures = new List<double> { };
-
-        public void StatisticTemp(double currentTemp)
+        /// <summary>
+        /// Обновление статистики температуры
+        /// </summary>
+        /// <param name="newTemp">Новая температура</param>
+        public void StatisticTemp(double newTemp)
         {
-            for (int i = 0; i < temperatures.Count; i++)
-            {
-                temperatures.Add(currentTemp);
-
-                if (minTemp == double.NaN)
+                if (double.IsNaN(minTemp))
                 {
-                    minTemp = currentTemp;
+                    minTemp = newTemp;
                 }
 
-                else if (minTemp > currentTemp)
+                else if (minTemp > newTemp)
                 {
-                    minTemp = currentTemp;
+                    minTemp = newTemp;
                 }
 
-                if (maxTemp == double.NaN)
+                if (double.IsNaN(maxTemp))
                 {
-                    maxTemp = currentTemp;
+                    maxTemp = newTemp;
                 }
-                else if (maxTemp < currentTemp)
+                else if (maxTemp < newTemp)
                 {
-                    maxTemp = currentTemp;
+                    maxTemp = newTemp;
                 }
 
                 averageTemp = (minTemp + maxTemp) / 2;
-            }
         }
 
-        public void StatisticPressure(double currentPressure)
+        /// <summary>
+        /// Обновление статистики давления
+        /// </summary>
+        /// <param name="newPressure">Новое давление</param>
+        public void StatisticPressure(double newPressure)
         {
-            for (int i = 0; i < pressures.Count; i++)
-            {
-                pressures.Add(currentPressure);
-
-                if (minPressure == double.NaN)
+                if (double.IsNaN(minPressure))
                 {
-                    minPressure = currentPressure;
+                    minPressure = newPressure;
                 }
 
-                else if (currentPressure < minPressure)
+                else if (newPressure < minPressure)
                 {
-                    minPressure = currentPressure;
+                    minPressure = newPressure;
                 }
 
-                if (maxPressure == double.NaN)
+                if (double.IsNaN(maxPressure))
                 {
-                    maxPressure = currentPressure;
+                    maxPressure = newPressure;
                 }
 
-                else if (currentPressure > maxPressure)
+                else if (newPressure > maxPressure)
                 {
-                    maxPressure= currentPressure;
+                    maxPressure= newPressure;
                 }
 
                 averagePressure = ((minPressure + maxPressure) / 2);
 
-                
-            }
         }
 
-        public void StatisticHumidity(double currentHumidity)
+        /// <summary>
+        /// Обновление статистики влажности
+        /// </summary>
+        /// <param name="newHumidity"></param>
+        public void StatisticHumidity(double newHumidity)
         {
-            for (int i = 0; i < humidities.Count; i++)
-            {
-                humidities.Add(currentHumidity);
-
-                if (minHumidity == double.NaN)
+                if (double.IsNaN(minHumidity))
                 {
-                    minHumidity = currentHumidity;
+                    minHumidity = newHumidity;
                 }
-                else if (currentHumidity < minHumidity)
+                else if (newHumidity < minHumidity)
                 {
-                    minHumidity = currentHumidity;
+                    minHumidity = newHumidity;
                 }
 
-                if (maxHumidity == double.NaN)
+                if (double.IsNaN(maxHumidity))
                 {
-                    maxHumidity = currentHumidity;
+                    maxHumidity = newHumidity;
                 }
-                else if (currentHumidity > maxHumidity)
+                else if (newHumidity > maxHumidity)
                 {
-                    maxHumidity = currentHumidity;
+                    maxHumidity = newHumidity;
                 }
 
                 averageHumidity = (minHumidity + maxHumidity) / 2;
-            }
         }
     }
 }
