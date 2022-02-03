@@ -28,7 +28,7 @@ namespace Observer
             {
                 wd.CurrentHumidity = rnd.Next(40, 60);
                 wd.CurrentPressure = rnd.Next(740, 755);
-                wd.CurrentTemperature = rnd.Next(10, 25);
+                wd.CurrentTemperature = rnd.Next(100, 250) / 10.0;
             }
 
             Console.WriteLine(ccd.Display());
