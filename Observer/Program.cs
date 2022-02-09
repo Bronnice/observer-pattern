@@ -31,11 +31,16 @@ namespace Observer
                 wd.CurrentTemperature = rnd.Next(100, 250) / 10.0;
             }
 
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(ccd.Display());
             Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(fd.Display());
             Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(sd.Display());
+
+            wd.RemoveObserver(fd);
 
             Console.ReadKey();
         }
